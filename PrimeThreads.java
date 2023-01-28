@@ -1,15 +1,12 @@
 // Emilio Morales, COP 4520, Spring 2023
 
-
 import java.util.*;
 import java.io.*;
 
 public class PrimeThreads 
 {
-
 	public static void main(String[] args) throws IOException 
 	{
-		
 		long sumPrimes = 0;
 		long numPrimes = 0;
 		
@@ -18,7 +15,7 @@ public class PrimeThreads
 		
 		long timeStart = System.currentTimeMillis();
 		
-		for (int i = 1; i <= 5; i++)
+		for (int i = 1; i <= 8; i++)
 		{
 			// Initializing a thread to find primes from where previous thread ended up till new range.
 			myThreads.add(new FindPrimes((int)Math.pow(10, i - 1), (int)Math.pow(10, i)));
@@ -61,7 +58,6 @@ public class PrimeThreads
 
 		return true;
 	}
-
 	
 }// End of Main
 
@@ -84,7 +80,7 @@ class FindPrimes extends Thread
 	@Override
 	public void run()
 	{
-		for (int i = myStartNum; i <= myEndNum; i++)
+		for (int i = myStartNum; i < myEndNum; i++)
 		{
 			if (isPrime(i))
 			{
